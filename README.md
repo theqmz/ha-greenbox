@@ -1,3 +1,5 @@
+<img src="brand/icon.png" alt="" width="128" align="right">
+
 # GreenBox for Home Assistant (unofficial)
 
 Control the light of a [BerlinGreen GreenBox](https://berlingreen.com) indoor garden from Home Assistant over Bluetooth. Fully local, no cloud, no account.

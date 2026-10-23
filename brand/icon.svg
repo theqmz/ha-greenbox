@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE7A3" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1DFC0"/>
+      <stop offset="1" stop-color="#DDC296"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8EE09A"/>
+      <stop offset="1" stop-color="#379A52"/>
+    </linearGradient>
+    <linearGradient id="leaf2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5CC174"/>
+      <stop offset="1" stop-color="#2A7F43"/>
+    </linearGradient>
+  </defs>
+
+  <!-- light from the lamp bar -->
+  <path d="M100 142 H412 L430 330 H82 Z" fill="url(#glow)" opacity="0.65"/>
+
+  <!-- thin wooden frame; the lamp sits in its top bar -->
+  <path d="M82 330 V150 Q82 118 114 118 H398 Q430 118 430 150 V330"
+        fill="none" stroke="#C59E66" stroke-width="18" stroke-linejoin="round"/>
+  <rect x="108" y="131" width="296" height="8" rx="4" fill="#FFF6D6"/>
+
+  <!-- plants: back row darker, front row lighter -->
+  <g fill="url(#leaf2)">
+    <path d="M120 330 C100 286 116 236 150 222 C166 262 156 302 120 330 Z"/>
+    <path d="M206 330 C192 270 214 214 252 196 C270 244 254 296 206 330 Z"/>
+    <path d="M300 330 C290 274 314 226 352 214 C364 258 346 302 300 330 Z"/>
+    <path d="M370 330 C372 292 390 262 414 254 C420 288 404 316 370 330 Z"/>
+  </g>
+  <g fill="url(#leaf)">
+    <path d="M150 334 C150 288 180 258 214 258 C214 296 188 324 150 334 Z"/>
+    <path d="M236 334 C224 290 240 250 276 236 C292 274 278 312 236 334 Z"/>
+    <path d="M270 334 C282 292 316 270 348 274 C340 308 310 330 270 334 Z"/>
+    <path d="M96 334 C98 302 118 280 144 278 C142 306 124 326 96 334 Z"/>
+  </g>
+
+  <!-- box: wide, low plywood trough -->
+  <rect x="40" y="320" width="432" height="124" rx="16" fill="url(#wood)" stroke="#B08650" stroke-width="6"/>
+  <rect x="40" y="320" width="432" height="14" rx="7" fill="#E7D0A6" stroke="#B08650" stroke-width="6"/>
+</svg>
