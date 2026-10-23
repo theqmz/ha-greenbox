@@ -1,4 +1,4 @@
-<img src="brand/icon.png" alt="" width="128" align="right">
+<img src="custom_components/greenbox/brand/icon.png" alt="" width="128" align="right">
 
 # GreenBox for Home Assistant (unofficial)
 
