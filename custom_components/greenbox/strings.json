@@ -1,0 +1,13 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "confirm": { "description": "GreenBox {name} einrichten?" },
+      "user": { "data": { "address": "Gerät" } }
+    },
+    "abort": {
+      "already_configured": "Diese GreenBox ist bereits eingerichtet.",
+      "no_devices_found": "Keine GreenBox in Bluetooth-Reichweite gefunden."
+    }
+  }
+}
