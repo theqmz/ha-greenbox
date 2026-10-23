@@ -2,12 +2,60 @@
   "config": {
     "flow_title": "{name}",
     "step": {
-      "confirm": { "description": "Set up GreenBox {name}?" },
-      "user": { "data": { "address": "Device" } }
+      "confirm": {
+        "description": "Set up GreenBox {name}?"
+      },
+      "user": {
+        "data": {
+          "address": "Device"
+        }
+      }
     },
     "abort": {
       "already_configured": "This GreenBox is already configured.",
       "no_devices_found": "No GreenBox found in Bluetooth range."
+    }
+  },
+  "entity": {
+    "light": {
+      "light": {
+        "state_attributes": {
+          "effect": {
+            "state": {
+              "growth": "Growth",
+              "medium": "Medium",
+              "ambient": "Ambient",
+              "night_light": "Night light"
+            }
+          }
+        }
+      }
+    },
+    "binary_sensor": {
+      "water_empty": {
+        "name": "Water tank empty"
+      }
+    },
+    "time": {
+      "weekday_start": {
+        "name": "Weekday light on"
+      },
+      "weekend_start": {
+        "name": "Weekend light on"
+      }
+    },
+    "number": {
+      "weekday_hours": {
+        "name": "Weekday light duration"
+      },
+      "weekend_hours": {
+        "name": "Weekend light duration"
+      }
+    },
+    "switch": {
+      "weekend_schedule": {
+        "name": "Separate weekend schedule"
+      }
     }
   }
 }

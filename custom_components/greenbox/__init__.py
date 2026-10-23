@@ -7,7 +7,7 @@ from homeassistant.core import HomeAssistant
 
 from .coordinator import GreenBoxConfigEntry, GreenBoxCoordinator
 
-PLATFORMS = [Platform.LIGHT, Platform.SENSOR]
+PLATFORMS = [Platform.BINARY_SENSOR, Platform.LIGHT, Platform.NUMBER, Platform.SENSOR, Platform.SWITCH, Platform.TIME]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: GreenBoxConfigEntry) -> bool:

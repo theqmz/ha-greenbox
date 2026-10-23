@@ -41,14 +41,20 @@ While a client is connected and subscribed to `ff05`, the box sends every regist
 
 | Register | Values | Meaning |
 |---|---|---|
-| `O` | 0 / 1 | Light off / on. A value of 3 was seen once; its meaning is unknown. |
+| `O` | bit field | Bit 0: light on. Bit 1: water present (set by the box). Seen: 0, 1, 3. Write 0 or 1 to switch the light. |
 | `1` | 0–100 | LED channel warm |
 | `2` | 0–100 | LED channel middle |
 | `3` | 0–100 | LED channel cold |
+| `W` | 0 / 100 | Water sensor: 0 = dry, 100 = in water. Only wet/dry, no level. Seemed to react slowly when the sensor was taken out. |
+| `S` | HHMM | Weekday schedule: light on time in **UTC** (700 = 07:00 UTC = 09:00 CEST) |
+| `D` | hours | Weekday schedule: light duration (the app allows 12 or more) |
+| `s` | HHMM | Weekend schedule: light on time in UTC |
+| `d` | hours | Weekend schedule: light duration; 0 = no separate weekend schedule |
 | `T` | 255 | unknown |
-| `f` | 3 | unknown |
-| `r` | 1 | unknown |
-| `D`, `d`, `S`, `s`, `W` | 0 | unknown (water level and schedule are likely candidates) |
+| `f` | 3 | unknown (firmware version?) |
+| `r` | 1 | unknown (firmware revision?) |
+
+Because the schedule is stored in UTC, the local on time shifts by one hour when daylight saving time changes, unless the app or Home Assistant writes it again. How the box knows the current time is not known yet.
 
 ### Light presets in the app
 
@@ -57,6 +63,7 @@ While a client is connected and subscribed to `ff05`, the box sends every regist
 | Growth, neutral, 100 % | 100 | 100 | 100 |
 | Ambient, warm (3000 K), 33 % | 99 | 0 | 0 |
 | Night light, cold (6000 K), 5 % | 0 | 0 | 15 |
+| Medium, neutral, 50 % | 50 | 50 | 50 (inferred, not captured) |
 
 So the brightness in percent is the channel sum divided by 3. Warm uses only channel 1, cold only channel 3, and neutral all three equally. The integration interpolates linearly for the colour temperatures in between; how the app mixes 3700 K and 5300 K has not been checked yet.
 

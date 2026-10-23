@@ -17,13 +17,13 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .protocol import CHANNELS, CHAR_REGISTERS, REG_POWER, build_frame, parse_frame
+from .protocol import CHANNELS, CHAR_REGISTERS, REG_STATUS, REG_WATER, build_frame, parse_frame
 
 _LOGGER = logging.getLogger(__name__)
 
 UPDATE_INTERVAL = timedelta(minutes=5)
 READ_TIMEOUT = 8.0
-REQUIRED = (REG_POWER, *CHANNELS)
+REQUIRED = (REG_STATUS, REG_WATER, *CHANNELS)
 
 type GreenBoxConfigEntry = ConfigEntry[GreenBoxCoordinator]
 
@@ -43,10 +43,10 @@ class GreenBoxCoordinator(DataUpdateCoordinator[dict[str, int]]):
             raise UpdateFailed(f"GreenBox not reachable: {err}") from err
 
     async def async_write(self, values: dict[str, int]) -> None:
-        """Write registers (power last), then refresh state from the box's echo."""
-        frames = [build_frame(reg, val) for reg, val in values.items() if reg != REG_POWER]
-        if REG_POWER in values:
-            frames.append(build_frame(REG_POWER, values[REG_POWER]))
+        """Write registers (status last), then refresh state from the box's echo."""
+        frames = [build_frame(reg, val) for reg, val in values.items() if reg != REG_STATUS]
+        if REG_STATUS in values:
+            frames.append(build_frame(REG_STATUS, values[REG_STATUS]))
         self.async_set_updated_data(await self._session(frames))
 
     async def _session(self, frames: list[bytes]) -> dict[str, int]:
